@@ -9,6 +9,8 @@
 <pre><u>
 Course: ${course.courseId} </u>
 <br/>
+These users were fetched by getting a list of members using: <br/>
+List<CourseMembership> members = CourseMembershipDbLoader.Default.getInstance().loadByCourseId( course.getId() ); <br/>
 <u>Users:</u><br/>
 <c:forEach items="${users}" var="element">
     <c:out value="${element.userName}"/><br/>
@@ -18,6 +20,14 @@ Course: ${course.courseId} </u>
 <u>The single user obtained by loadByCourseAndUserId:</u><br/>
 
     <c:out value="${user2.userName}"/><br/>
+
+These users were fetched, one at a time using: <br/>
+CourseMembership aMember = CourseMembershipDbLoader.Default.getInstance().loadByCourseAndUserId( course.getId(), aUser.getId() );</br>
+<u>Users:</u><br/>
+<c:forEach items="${userslbcuid}" var="element">
+    <c:out value="${element.userName}"/><br/>
+</c:forEach>
+
 
 </pre>
 </body>

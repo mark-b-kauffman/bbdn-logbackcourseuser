@@ -85,6 +85,14 @@ public class HelloCourseController
     String formattedDate = dateFormat.format(date);
     mv.addObject("serverTime", formattedDate ); */
 
+    // Test loadByCourseAndUserId for every user.
+		List <User> userslbcuid = new LinkedList<User>();
+		for (User aUser : users){
+			CourseMembership aMember = CourseMembershipDbLoader.Default.getInstance().loadByCourseAndUserId( course.getId(), aUser.getId() );
+			userslbcuid.add(_userLoader.loadById( aMember.getUserId() ) );
+		}
+		mv.addObject("userslbcuid", userslbcuid);
+
 		logger.info("EXIT HelloCourseController:listCourseUsers()");
     return mv;
   }
